@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>菜鸟教程 React 实例</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+	<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+	<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+  </head>
+ <body>
+    <div id="example"></div>
+
+    <script type="text/babel">
+      var Button = React.createClass({
+        getInitialState: function () {
+          return {data: 0}
+        },
+        setNewNumber: function () {
+          this.setState({data: this.state.data + 1})
+        },
+        render: function () {
+          return (
+            <div>
+              <button onClick={this.setNewNumber}>增加</button>
+              <Content myNumber={this.state.data} />
+            </div>
+          )
+        }
+      })
+      var Content = React.createClass({
+        componentWillMount: function () {
+          console.log('componentWillMount');
+        },
+        componentDidMount: function () {
+          console.log('componentDidMount');
+        },
+        componentWillReceiveProps: function (NewProps) {
+          console.log('componentWillReceiveProps');
+        },
+        shouldComponentUpdata: function (NewProps, NewState) {
+          return true
+        },
+        componentWillUpdata: function (nextProps, nextState) {
+          console.log('componentWillUpdata');
+        },
+        componentDidUpdata: function (prevProps, prevState) {
+          console.log('componentDidUpdata');
+        },
+        componentWillUnmount: function () {
+          console.log('componentWillUnmount');
+        },
+        render: function () {
+          return (
+            <div>
+              <h3>{this.props.myNumber}</h3>
+            </div>
+          )
+        }
+      })
+
+      ReactDOM.render(
+        <div>
+          <Button/>
+        </div>,
+        document.getElementById('example')
+      )
+    </script>
+  </body>
+</html>
