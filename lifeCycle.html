@@ -29,10 +29,10 @@
       })
       var Content = React.createClass({
         componentWillMount: function () {
-          console.log('componentWillMount');
+          console.log('componentWillMount'); //在渲染前调用,在客户端也在服务端。
         },
         componentDidMount: function () {
-          console.log('componentDidMount');
+          console.log('componentDidMount'); // 在第一次渲染后调用，只在客户端。
         },
         componentWillReceiveProps: function (NewProps) {
           console.log('componentWillReceiveProps');
